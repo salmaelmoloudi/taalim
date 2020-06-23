@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+    
+    
+    <navigation-rule>
+    <from-view-id>/ListCours.xhtml</from-view-id>
+    <navigation-case> 
+      <from-action>#{CoursBean1.fonction}</from-action> 
+      <from-outcome>ContenuCours</from-outcome> 
+      <to-view-id>ContenuCours.xhtml</to-view-id> 
+   </navigation-case> 
+    
+</navigation-rule>
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+        	<from-action>#{loginBean.checkuser()}</from-action>
+            <from-outcome>Etudiant</from-outcome>
+            <to-view-id>/ListCours.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        
+        <navigation-case>
+        	<from-action>#{loginBean.checkuser()}</from-action>
+            <from-outcome>Enseignant</from-outcome>
+            <to-view-id>/AddCours.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+            <navigation-case>
+        	<from-action>#{loginBean.checkuser()}</from-action>
+            <from-outcome>No</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        
+        
+    </navigation-rule>
+    
+    
+
+</faces-config>

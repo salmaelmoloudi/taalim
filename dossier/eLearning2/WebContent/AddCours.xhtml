@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+ 
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    >
+<h:head>
+  <title><ui:insert name="title">Ajouter un nouveau cours</ui:insert></title>
+</h:head>
+
+<h:body>
+
+<style type="text/css">
+     .value {
+        font-weight: bold;
+    }
+     
+    .ui-carousel {
+        margin-bottom: 20px;
+    }
+    
+    body {
+  background-color: linen;
+}
+</style>
+ <h:form>  
+ 
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:submenu label="File" icon="pi pi-file">
+            <p:submenu label="New" icon="pi pi-briefcase">
+                <p:menuitem value="Project" url="#" />
+                <p:menuitem value="Other" url="#" />
+            </p:submenu>
+            <p:menuitem value="Open" url="#" />
+            <p:separator />
+            <p:menuitem value="Quit" url="#" />
+        </p:submenu>
+ 
+        <p:submenu label="Edit" icon="pi pi-pencil">
+            <p:menuitem value="Undo" url="#" icon="pi pi-angle-double-left" />
+            <p:menuitem value="Redo" url="#" icon="pi pi-angle-double-right" />
+        </p:submenu>
+ 
+        <p:submenu label="Help" icon="pi pi-question">
+            <p:menuitem value="Contents" url="#" />
+            <p:submenu label="Search" icon="pi pi-search">
+                <p:submenu label="Text">
+                    <p:menuitem value="Workspace" url="#" />
+                </p:submenu>
+                <p:menuitem value="File" url="#" />
+            </p:submenu>
+        </p:submenu>
+ 
+        <p:submenu label="Actions" icon="pi pi-cog">
+            <p:submenu label="Ajax" icon="pi pi-refresh">
+                <p:menuitem value="Save"  icon="pi pi-save" update="messages"/>
+                <p:menuitem value="Update"  icon="pi pi-refresh" update="messages"/>
+            </p:submenu>
+            <p:submenu label="Non-Ajax" icon="pi pi-clone">
+                <p:menuitem value="Delete"  icon="pi pi-times" update="messages" ajax="false"/>
+            </p:submenu>
+        </p:submenu>
+ 
+        <p:menuitem value="Quit" url="http://www.primefaces.org" icon="pi pi-times" />
+ 
+        <f:facet name="options">
+            <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
+            <p:commandButton type="button" value="Logout" icon="pi pi-home"  />
+        </f:facet>
+    </p:menubar>
+    
+    <br/>
+	<br/>
+	<br/>
+	
+
+<h:form>
+
+<div class="ui-fluid p-formgrid p-grid">
+		
+		<h:messages styleClass="error" >
+	<h:outputText value="#{CoursBean1.succés}"></h:outputText>
+	
+
+        <div class="p-field p-col-12 p-md-6">
+        	<p:outputLabel value="Titre du cours" for="nomcours"/>
+            <p:inputText  value="#{CoursBean1.nomcours}"  id="nomcours" required="true"  requiredMessage="Vous devez indiquer un titre"/>
+        </div>
+        
+        <div class="p-field p-col-12">
+            <p:outputLabel value="Contenu du cours" for="contenu"/> 
+            <p:inputTextarea rows="20"  cols="70" value="#{CoursBean1.contenu}" id="contenu" required="true" requiredMessage="Vous devez remplir le contenu" />
+        </div>
+        <br/>
+        <div class="p-field p-col-12 p-md-3">
+        
+        <p:outputLabel value="Catégorie du cours" for="catégorie"/> 
+            <p:selectOneMenu value ="#{CoursBean1.catégorie}" id="catégorie" required="true" requiredMessage="Vous devez Choisir la catégorie de votre cours"> 
+		  <f:selectItem itemValue="" itemLabel=""></f:selectItem>
+		  <f:selectItems value="#{CoursBean1.catégories}" ></f:selectItems>
+		  </p:selectOneMenu>
+        </div>
+        
+        <br/> <br/>
+        
+         <h:commandButton value="Ajouter" actionListener="#{CoursBean1.addCours}"  /> 
+	
+		 </h:messages>
+        
+    </div>
+    
+    
+    
+    
+     
+
+</h:form>
+
+
+
+
+</h:form>
+
+
+
+
+
+
+</h:body>
+
+</html>
